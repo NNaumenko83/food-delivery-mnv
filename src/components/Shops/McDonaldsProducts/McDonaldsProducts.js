@@ -10,20 +10,15 @@ export const McDonaldsProducts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  console.log('HAAAAAAAAAAAAAAAA');
-
   const location = useLocation();
   const { pathname } = location;
 
   useEffect(() => {
-    // if (products.length === 0) {
-    //   return;
-    // }
     console.log('useEffect');
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const products = await getProducts();
+        const products = await getProducts(pathname);
         console.log('products:', products);
 
         setProducts(products);
@@ -35,7 +30,7 @@ export const McDonaldsProducts = () => {
     };
 
     fetchProducts();
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {});
 

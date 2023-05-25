@@ -1,15 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectProducts } from "../../redux/productsSlice";
-import { CartProductsListItem } from "../CartProductsListItem/CartProductsListItem";
-import { CartList } from "./CartProductsList.styled";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectProducts } from '../../redux/productsSlice';
+import { CartProductsListItem } from '../CartProductsListItem/CartProductsListItem';
+import { CartList } from './CartProductsList.styled';
 
 export const CartProductsList = () => {
   const products = useSelector(selectProducts);
 
   return products.length > 0 ? (
     <CartList>
-      {products.map((product) => (
+      {products.map(product => (
         <CartProductsListItem
           key={product.id}
           image={product.img}
