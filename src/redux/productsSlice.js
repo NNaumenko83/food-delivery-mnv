@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const initialState = { products: [] };
 
 export const productsSlice = createSlice({
-  name: "products",
+  name: 'products',
   initialState,
   reducers: {
     addProduct: (state, action) => {
@@ -13,7 +13,7 @@ export const productsSlice = createSlice({
     },
 
     deleteProduct: (state, action) => {
-      const productIndex = state.products.findIndex((product) => {
+      const productIndex = state.products.findIndex(product => {
         return product.id === action.payload;
       });
 
@@ -21,7 +21,7 @@ export const productsSlice = createSlice({
     },
 
     changeAmount: (state, action) => {
-      const productIndex = state.products.findIndex((product) => {
+      const productIndex = state.products.findIndex(product => {
         return product.id === action.payload.id;
       });
 
@@ -29,20 +29,25 @@ export const productsSlice = createSlice({
         state.products[productIndex].qty = Number(action.payload.qty);
       }
     },
+
+    resetProducts: (state, action) => {
+      state = initialState;
+      return state;
+    },
   },
 });
 
 const persistConfig = {
-  key: "products",
+  key: 'products',
   storage,
 };
 
-export const { addProduct, deleteProduct, changeAmount } =
+export const { addProduct, deleteProduct, changeAmount, resetProducts } =
   productsSlice.actions;
 
-export const selectProducts = (state) => state.products.products;
+export const selectProducts = state => state.products.products;
 
-export const selectTotalValue = (state) => {
+export const selectTotalValue = state => {
   const total = state.products.products.reduce(
     (acc, product) => (acc += product.qty * product.price),
     0

@@ -15,7 +15,23 @@ export const ProductCard = ({ name, img, price, id }) => {
 
   const handleButtonClick = () => {
     if (selectedProducts.length === 0) {
-      dispatch(addShop(location.pathname));
+      const modifiedShop = location.pathname.replace('/', '');
+      let shopName = '';
+      switch (modifiedShop) {
+        case 'kfc':
+          shopName = 'KFC';
+          break;
+        case 'murakami':
+          shopName = 'Murakami';
+          break;
+        case 'mcdonalds':
+          shopName = 'McDonalds';
+          break;
+
+        default:
+          shopName = '';
+      }
+      dispatch(addShop(shopName));
     }
 
     const productArray = selectedProducts.filter(product => {

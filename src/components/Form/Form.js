@@ -1,18 +1,21 @@
-import React, { useState } from "react";
-import { ErrorText, FormCart, FormInput, SubmitButton } from "./Form.styled";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { selectProducts } from "../../redux/productsSlice";
+import React, { useState } from 'react';
+import { ErrorText, FormCart, FormInput, SubmitButton } from './Form.styled';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetProducts, selectProducts } from '../../redux/productsSlice';
+import { sendOrder } from 'services/ShopAPI';
+import { deleteShop, selectShop } from 'redux/shopSlice';
+import { Oval } from 'react-loader-spinner';
 
 export const Form = () => {
+  const dispatch = useDispatch();
   const selectedProducts = useSelector(selectProducts);
+  const shop = useSelector(selectShop);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    adress: "",
-  });
+  const initialState = { name: '', email: '', phone: '', adress: '' };
+
+  const [formData, setFormData] = useState(initialState);
 
   const [errors, setErrors] = useState({});
 
@@ -22,57 +25,91 @@ export const Form = () => {
 
     if (!formData.name.trim()) {
       formIsValid = false;
-      newErrors.name = "Name is required";
+      newErrors.name = 'Name is required';
     } else if (newErrors.email) {
-      newErrors.email = "";
+      newErrors.email = '';
     }
 
     const emailRegExp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     if (!formData.email.trim()) {
       formIsValid = false;
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required';
     } else if (!emailRegExp.test(formData.email)) {
       formIsValid = false;
-      newErrors.email = "Invalid email address";
+      newErrors.email = 'Invalid email address';
     }
 
     const phoneRegExp = /^\d{3} \d{3}-\d{2}-\d{2}$/;
 
     if (!formData.phone.trim()) {
       formIsValid = false;
-      newErrors.phone = "Phone is required";
+      newErrors.phone = 'Phone is required';
     } else if (!phoneRegExp.test(formData.phone)) {
       formIsValid = false;
-      newErrors.phone = "Invalid phone number";
+      newErrors.phone = 'Invalid phone number';
     }
 
     if (!formData.adress.trim()) {
       formIsValid = false;
-      newErrors.adress = "Address is required";
+      newErrors.adress = 'Address is required';
     }
 
     setErrors(newErrors);
     return formIsValid;
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    if (validateForm()) {
-    } else {
-      toast.error("Fill all fields", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+    try {
+      setIsLoading(true);
+      if (validateForm()) {
+        await sendOrder({
+          ...formData,
+          shop,
+          products: [...selectedProducts],
+        });
+        setFormData(initialState);
+
+        e.target.reset();
+
+        toast.success(
+          'Thank you for your order. Our manager will call you as soon as possible.',
+          {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+          }
+        );
+        console.log('Test');
+
+        dispatch(deleteShop());
+        dispatch(resetProducts());
+      } else {
+        toast.error('Fill all fields', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        });
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -104,7 +141,22 @@ export const Form = () => {
         {errors.adress && <ErrorText>{errors.adress}</ErrorText>}
       </label>
       <SubmitButton type="submit" disabled={selectedProducts.length === 0}>
-        Submit
+        {isLoading ? (
+          <Oval
+            height={20}
+            width={20}
+            color="#d74600"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="oval-loading"
+            secondaryColor="#4fa94d"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        ) : (
+          <p>Submit</p>
+        )}
       </SubmitButton>
     </FormCart>
   );

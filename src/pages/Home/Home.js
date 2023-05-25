@@ -14,17 +14,17 @@ const Home = () => {
     <div style={{ display: 'flex', gap: '20px' }}>
       <ShopsContainer>
         Shops:
-        {shop === '/mcdonalds' || shop === '' ? (
+        {shop === 'McDonalds' || shop === '' ? (
           <NavLink to="/mcdonalds">McDonalds</NavLink>
         ) : (
           <Disabled>McDonalds</Disabled>
         )}
-        {shop === '/kfc' || shop === '' ? (
+        {shop === 'KFC' || shop === '' ? (
           <NavLink to="/kfc">KFC</NavLink>
         ) : (
           <Disabled>KFC</Disabled>
         )}
-        {shop === '/murakami' || shop === '' ? (
+        {shop === 'Murakami' || shop === '' ? (
           <NavLink to="/murakami">Murakami</NavLink>
         ) : (
           <Disabled>Murakami</Disabled>

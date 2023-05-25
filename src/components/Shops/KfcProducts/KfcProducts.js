@@ -14,13 +14,10 @@ const KfcProducts = () => {
   const { pathname } = location;
 
   useEffect(() => {
-    console.log('useEffect');
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
         const products = await getProducts(pathname);
-        console.log('products:', products);
-
         setProducts(products);
       } catch (error) {
         setErrorMessage(error.message);
@@ -31,8 +28,6 @@ const KfcProducts = () => {
 
     fetchProducts();
   }, [pathname]);
-
-  useEffect(() => {});
 
   return (
     <>

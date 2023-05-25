@@ -14,12 +14,10 @@ const McDonaldsProducts = () => {
   const { pathname } = location;
 
   useEffect(() => {
-    console.log('useEffect');
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
         const products = await getProducts(pathname);
-        console.log('products:', products);
 
         setProducts(products);
       } catch (error) {
@@ -31,8 +29,6 @@ const McDonaldsProducts = () => {
 
     fetchProducts();
   }, [pathname]);
-
-  useEffect(() => {});
 
   return (
     <>
