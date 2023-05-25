@@ -1,0 +1,62 @@
+[
+  {
+    "name": "McDouble",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "392.00",
+    "id": "1"
+  },
+  {
+    "name": "Big Tasty",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "118.00",
+    "id": "2"
+  },
+  {
+    "name": "McWrap",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "478.00",
+    "id": "3"
+  },
+  {
+    "name": "Chicken McNuggets",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "412.00",
+    "id": "4"
+  },
+  {
+    "name": "Quarter Pounder Deluxe",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "902.00",
+    "id": "5"
+  },
+  {
+    "name": "McChicken Deluxe",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "307.00",
+    "id": "6"
+  },
+  {
+    "name": "Filet-O-Fish",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "973.00",
+    "id": "7"
+  },
+  {
+    "name": "Cheeseburger",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "528.00",
+    "id": "8"
+  },
+  {
+    "name": "Spicy McChicken",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "180.00",
+    "id": "9"
+  },
+  {
+    "name": "McFlurry",
+    "image": "https://loremflickr.com/640/480/food",
+    "price": "828.00",
+    "id": "10"
+  }
+]
