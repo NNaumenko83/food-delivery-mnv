@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/https:/github.com/NNaumenko83/food-delivery-mnv">
+        <BrowserRouter basename="/food-delivery-mnv">
           <App />
         </BrowserRouter>
       </PersistGate>
