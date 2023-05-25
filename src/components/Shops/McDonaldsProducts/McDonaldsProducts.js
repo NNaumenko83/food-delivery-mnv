@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { Bars } from 'react-loader-spinner';
 import Error from 'components/Error/Error';
 
-export const McDonaldsProducts = () => {
+const McDonaldsProducts = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -54,3 +54,5 @@ export const McDonaldsProducts = () => {
     </>
   );
 };
+
+export default McDonaldsProducts;

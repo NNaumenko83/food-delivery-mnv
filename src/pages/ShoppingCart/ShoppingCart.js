@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import {
   CartContainer,
   CartProducts,
   FormContainer,
   TextPrice,
-} from "./ShoppingCart.styled";
-import { Form } from "../../components/Form/Form";
-import { CartProductsList } from "../../components/CartProductsList/CartProductsList";
-import { useDispatch, useSelector } from "react-redux";
-import { selectProducts, selectTotalValue } from "../../redux/productsSlice";
-import { useEffect } from "react";
-import { deleteShop } from "../../redux/shopSlice";
+} from './ShoppingCart.styled';
+import { Form } from '../../components/Form/Form';
+import { CartProductsList } from '../../components/CartProductsList/CartProductsList';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectProducts, selectTotalValue } from '../../redux/productsSlice';
+import { useEffect } from 'react';
+import { deleteShop } from '../../redux/shopSlice';
 
-export const ShoppingCart = () => {
+const ShoppingCart = () => {
   const total = useSelector(selectTotalValue);
   const selectedProducts = useSelector(selectProducts);
   const dispatch = useDispatch();
@@ -37,3 +37,5 @@ export const ShoppingCart = () => {
     </>
   );
 };
+
+export default ShoppingCart;

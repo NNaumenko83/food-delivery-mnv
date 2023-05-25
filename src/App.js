@@ -1,13 +1,24 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { Suspense, lazy } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-import { Home } from './pages/Home/Home';
-import { NotFound } from './pages/NotFound/NotFound';
-import { McDonaldsProducts } from './components/Shops/McDonaldsProducts/McDonaldsProducts';
-import { KfcProducts } from './components/Shops/KfcProducts/KfcProducts';
-import { MurakamiProducts } from './components/Shops/MurakamiProducts/MurakamiProducts';
 import { Container } from './App.styled';
-import { ShoppingCart } from './pages/ShoppingCart/ShoppingCart';
+
+const ShoppingCart = lazy(() => import('./pages/ShoppingCart/ShoppingCart'));
+
+const Home = lazy(() => import('./pages/Home/Home'));
+
+const McDonaldsProducts = lazy(() =>
+  import('./components/Shops/McDonaldsProducts/McDonaldsProducts')
+);
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+
+const KfcProducts = lazy(() =>
+  import('./components/Shops/KfcProducts/KfcProducts')
+);
+const MurakamiProducts = lazy(() =>
+  import('./components/Shops/MurakamiProducts/MurakamiProducts')
+);
 
 function App() {
   return (
@@ -20,16 +31,19 @@ function App() {
         </nav>
       </header>
 
-      <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="mcdonalds" element={<McDonaldsProducts />} />
-          <Route path="kfc" element={<KfcProducts />} />
-          <Route path="murakami" element={<MurakamiProducts />} />
-        </Route>
+      <Suspense fallback={<div>Loading</div>}>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route path="mcdonalds" element={<McDonaldsProducts />} />
+            <Route path="kfc" element={<KfcProducts />} />
+            <Route path="murakami" element={<MurakamiProducts />} />
+          </Route>
 
-        <Route path="cart" element={<ShoppingCart />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="cart" element={<ShoppingCart />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+
       <ToastContainer />
     </Container>
   );
