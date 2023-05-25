@@ -1,18 +1,15 @@
 import React from 'react';
 import { Button, Input, ProductCartItem } from './CartProductsListItem.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  changeAmount,
-  deleteProduct,
-  selectProducts,
-} from '../../redux/productsSlice';
+import { useDispatch } from 'react-redux';
+import { changeAmount, deleteProduct } from '../../redux/productsSlice';
+import imagePlaceholder from '../../images/placeholder-image.jpeg';
+import PropTypes from 'prop-types';
 
 export const CartProductsListItem = ({ image, price, id, name, qty }) => {
   const dispatch = useDispatch();
-  const selectedProducts = useSelector(selectProducts);
 
   const handleInputChange = e => {
-    if (Number(e.target.value) === 0) {
+    if (Number(e.target.value) <= 0) {
       return;
     }
     dispatch(changeAmount({ id, qty: e.target.value }));
@@ -20,7 +17,10 @@ export const CartProductsListItem = ({ image, price, id, name, qty }) => {
 
   const handleButtonDeleteClick = () => {
     dispatch(deleteProduct(id));
-    console.log('selectedProducts:', selectedProducts);
+  };
+
+  const handleImageError = event => {
+    event.target.src = imagePlaceholder;
   };
 
   return (
@@ -31,6 +31,7 @@ export const CartProductsListItem = ({ image, price, id, name, qty }) => {
           src={image}
           alt={name}
           width={'300px'}
+          onError={handleImageError}
         />
       </div>
       <div style={{ width: '50%', display: 'flex', flexDirection: 'column' }}>
@@ -49,4 +50,12 @@ export const CartProductsListItem = ({ image, price, id, name, qty }) => {
       </div>
     </ProductCartItem>
   );
+};
+
+CartProductsListItem.propTypes = {
+  image: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  qty: PropTypes.number.isRequired,
 };

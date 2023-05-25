@@ -3,12 +3,12 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { Disabled, ProductsContainer, ShopsContainer } from './Home.styled';
 import { useSelector } from 'react-redux';
 import { selectShop } from '../../redux/shopSlice';
+import { Bars } from 'react-loader-spinner';
 
 const Home = () => {
   const shop = useSelector(selectShop);
   const location = useLocation();
   const path = location.pathname;
-  console.log('path:', path);
 
   return (
     <div style={{ display: 'flex', gap: '20px' }}>
@@ -32,7 +32,19 @@ const Home = () => {
       </ShopsContainer>
       <ProductsContainer>
         {path === '/' && <h3>Choose a shop and make order</h3>}
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <Bars
+              height="40"
+              width="40"
+              color="#280232"
+              ariaLabel="bars-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          }
+        >
           <Outlet />
         </Suspense>
       </ProductsContainer>

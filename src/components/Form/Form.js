@@ -89,7 +89,6 @@ export const Form = () => {
             theme: 'colored',
           }
         );
-        console.log('Test');
 
         dispatch(deleteShop());
         dispatch(resetProducts());

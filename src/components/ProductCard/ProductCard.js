@@ -5,6 +5,8 @@ import { addProduct, selectProducts } from '../../redux/productsSlice';
 import { toast } from 'react-toastify';
 import { addShop } from '../../redux/shopSlice';
 import { useLocation } from 'react-router-dom';
+import imagePlaceholder from '../../images/placeholder-image.jpeg';
+import PropTypes from 'prop-types';
 
 export const ProductCard = ({ name, img, price, id }) => {
   const dispatch = useDispatch();
@@ -66,6 +68,10 @@ export const ProductCard = ({ name, img, price, id }) => {
     });
   };
 
+  const handleImageError = event => {
+    event.target.src = imagePlaceholder;
+  };
+
   return (
     <Card>
       <img
@@ -73,7 +79,9 @@ export const ProductCard = ({ name, img, price, id }) => {
         src={img}
         alt={name}
         width={'300px'}
+        onError={handleImageError}
       />
+
       <h3>{name}</h3>
       <p>{price} UAH</p>
       <Button type="button" onClick={handleButtonClick}>
@@ -81,4 +89,11 @@ export const ProductCard = ({ name, img, price, id }) => {
       </Button>
     </Card>
   );
+};
+
+ProductCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
