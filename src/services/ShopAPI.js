@@ -1,11 +1,13 @@
-import mcDonaldsProducts from '../db/md.json';
-// import kfcProducts from "../db/kfc.json";
-// import murakamiProducts from "../db/murakami.json";
+import axios from 'axios';
 
-export const getProducts = () => {
-  return mcDonaldsProducts;
-};
+const BASE_URL =
+  'https://food-delivery-mnv-back.onrender.com/api/shops/murakami';
 
-export const getProductById = productId => {
-  return mcDonaldsProducts.find(product => product.id === productId);
+const productsApi = axios.create({
+  baseURL: BASE_URL,
+});
+
+export const getProducts = async pathname => {
+  const response = await productsApi('');
+  return response.data.data;
 };
