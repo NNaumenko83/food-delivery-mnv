@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/697.af928400.chunk.js","mappings":"0MAEaA,EAAW,WACtB,OAAO,wBAAI,0BACZ,C","sources":["pages/NotFound/NotFound.js"],"sourcesContent":["import React from \"react\";\n\nexport const NotFound = () => {\n  return <h1>Ooops! Page not found!</h1>;\n};\n\n\n"],"names":["NotFound"],"sourceRoot":""}

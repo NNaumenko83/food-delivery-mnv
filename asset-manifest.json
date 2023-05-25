@@ -1,15 +1,29 @@
 {
   "files": {
     "main.css": "/food-delivery-mnv/static/css/main.3e93330f.css",
-    "main.js": "/food-delivery-mnv/static/js/main.d6b49418.js",
+    "main.js": "/food-delivery-mnv/static/js/main.e002fb05.js",
+    "static/js/552.ca47c690.chunk.js": "/food-delivery-mnv/static/js/552.ca47c690.chunk.js",
+    "static/js/526.7fc47b32.chunk.js": "/food-delivery-mnv/static/js/526.7fc47b32.chunk.js",
+    "static/js/707.c7cf5063.chunk.js": "/food-delivery-mnv/static/js/707.c7cf5063.chunk.js",
+    "static/js/697.af928400.chunk.js": "/food-delivery-mnv/static/js/697.af928400.chunk.js",
+    "static/js/362.55f9bab2.chunk.js": "/food-delivery-mnv/static/js/362.55f9bab2.chunk.js",
+    "static/js/69.ab123706.chunk.js": "/food-delivery-mnv/static/js/69.ab123706.chunk.js",
     "static/js/787.6b7abe35.chunk.js": "/food-delivery-mnv/static/js/787.6b7abe35.chunk.js",
+    "static/js/631.cb592727.chunk.js": "/food-delivery-mnv/static/js/631.cb592727.chunk.js",
     "index.html": "/food-delivery-mnv/index.html",
     "main.3e93330f.css.map": "/food-delivery-mnv/static/css/main.3e93330f.css.map",
-    "main.d6b49418.js.map": "/food-delivery-mnv/static/js/main.d6b49418.js.map",
-    "787.6b7abe35.chunk.js.map": "/food-delivery-mnv/static/js/787.6b7abe35.chunk.js.map"
+    "main.e002fb05.js.map": "/food-delivery-mnv/static/js/main.e002fb05.js.map",
+    "552.ca47c690.chunk.js.map": "/food-delivery-mnv/static/js/552.ca47c690.chunk.js.map",
+    "526.7fc47b32.chunk.js.map": "/food-delivery-mnv/static/js/526.7fc47b32.chunk.js.map",
+    "707.c7cf5063.chunk.js.map": "/food-delivery-mnv/static/js/707.c7cf5063.chunk.js.map",
+    "697.af928400.chunk.js.map": "/food-delivery-mnv/static/js/697.af928400.chunk.js.map",
+    "362.55f9bab2.chunk.js.map": "/food-delivery-mnv/static/js/362.55f9bab2.chunk.js.map",
+    "69.ab123706.chunk.js.map": "/food-delivery-mnv/static/js/69.ab123706.chunk.js.map",
+    "787.6b7abe35.chunk.js.map": "/food-delivery-mnv/static/js/787.6b7abe35.chunk.js.map",
+    "631.cb592727.chunk.js.map": "/food-delivery-mnv/static/js/631.cb592727.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3e93330f.css",
-    "static/js/main.d6b49418.js"
+    "static/js/main.e002fb05.js"
   ]
 }
