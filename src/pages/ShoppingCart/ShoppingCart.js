@@ -3,6 +3,7 @@ import {
   CartContainer,
   CartProducts,
   FormContainer,
+  MapWrapper,
   TextPrice,
 } from './ShoppingCart.styled';
 import { Form } from '../../components/Form/Form';
@@ -27,6 +28,7 @@ const ShoppingCart = () => {
     <>
       <CartContainer>
         <FormContainer>
+          <MapWrapper>There will be map</MapWrapper>
           <Form />
         </FormContainer>
         <CartProducts>

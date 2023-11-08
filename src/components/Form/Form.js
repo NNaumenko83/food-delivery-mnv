@@ -115,6 +115,11 @@ export const Form = () => {
   return (
     <FormCart onSubmit={handleSubmit}>
       <label>
+        Address:
+        <FormInput type="text" name="address" onChange={handleChange} />
+        {errors.name && <ErrorText>{errors.name}</ErrorText>}
+      </label>
+      <label>
         Name:
         <FormInput type="text" name="name" onChange={handleChange} />
         {errors.name && <ErrorText>{errors.name}</ErrorText>}

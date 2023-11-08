@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const CartContainer = styled.div`
   display: flex;
@@ -31,4 +31,10 @@ export const FormContainer = styled.div`
 export const TextPrice = styled.p`
   margin-top: 20px;
   font-size: 1.2rem;
+`;
+
+export const MapWrapper = styled.div`
+  height: 200px;
+  border: 1px solid red;
+  margin-bottom: 30px;
 `;
