@@ -13,6 +13,9 @@ import { selectProducts, selectTotalValue } from '../../redux/productsSlice';
 import { useEffect } from 'react';
 import { deleteShop } from '../../redux/shopSlice';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+console.log('API_KEY:', API_KEY);
+
 const ShoppingCart = () => {
   const total = useSelector(selectTotalValue);
   const selectedProducts = useSelector(selectProducts);
